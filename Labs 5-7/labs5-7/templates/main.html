@@ -1,0 +1,86 @@
+
+{% extends 'base.html' %}
+
+{% block body1 %}
+    <div id="header1">
+        <div class="container">
+            <div class="row centered">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h1>Популярные новинки:</h1>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="container">
+            <div class="row centered">
+                {% load static %}
+                <div class="col-lg-4">
+                    <a href="{% url 'card_info_url' 1 %}"><img src="{% static "images/gtx 1060ti.png" %}" width="200" height="200" alt="iPhone7 image"/></a>
+                </div>
+                <div class="col-lg-4">
+                    <a href="{% url 'card_info_url' 2 %}"><img src="{% static "images/gtx 1080ti.png" %}" width="200" height="200" alt="iPhone8 image"/></a>
+                </div>
+                <div class="col-lg-4">
+                    <a href="{% url 'card_info_url' 3 %}"><img src="{% static "images/Titan.png" %}" width="300" height="200" alt="NVIDIA TITAN Xp"/></a>
+                </div>
+            </div>
+            <div class="row ">
+    <div class="col-md-4 col-sm-6">
+        <div class="pricingTable">
+            <div class="pricingTable-header">
+                <span class="price-value">22.990 ₽</span>
+                <h3 class="title">GEFORCE GTX 1060</h3>
+            </div>
+                <ul class="pricing-content">
+                    <li>Архитектура GPU	Pascal</li>
+                    <li>Фреймбуфер	6 GB GDDR5</li>
+                    <li>Быстродействие памяти	8 Gbps</li>
+                    <li>Тактовая частота с ускорением 	1708 MHz</li>
+                </ul>
+                    <a href="{% url 'orders_url' %}" class="pricingTable-signup a">Заказать</a>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-6">
+        <div class="pricingTable">
+            <div class="pricingTable-header">
+                <span class="price-value">52.990 ₽</span>
+                <h3 class="title">GEFORCE GTX 1080 Ti</h3>
+            </div>
+                <ul class="pricing-content">
+                    <li>Архитектура GPU	Pascal</li>
+                    <li>Фреймбуфер	11 GB GDDR5X</li>
+                    <li>Быстродействие памяти	11 Gbps</li>
+                    <li>Тактовая частота с ускорением	1582 MHz</li>
+                </ul>
+                    <a href="{% url 'orders_url' %}" class="pricingTable-signup a">Заказать</a>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-6">
+        <div class="pricingTable">
+            <div class="pricingTable-header">
+                <span class="price-value">88.900 ₽</span>
+                 <h3 class="title"> NVIDIA TITAN Xp</h3>
+            </div>
+                <ul class="pricing-content">
+                    <li>Архитектура GPU 	Pascal</li>
+                    <li>Фреймбуфер 	12 GB G5X</li>
+                    <li>Быстродействие памяти 	11.4 Gbps</li>
+                    <li>Тактовая частота с ускорением		1582 MHz</li>
+                </ul>
+            <a href="{% url 'orders_url' %}" class="pricingTable-signup a">Заказать</a>
+        </div>
+    </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

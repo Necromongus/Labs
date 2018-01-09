@@ -1,0 +1,34 @@
+
+{% extends 'base.html' %}
+
+{% block body1 %}
+    <div id="header1">
+        <div class="container">
+            <div class="row centered">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h1>
+                        {% for ph in data2.cards %}
+                            {% if ph.id == data1.card.id %}
+                                {{ ph.card_name }}
+                            {% endif %}
+                        {% empty %}
+                            empty list
+                        {% endfor %}
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="col-lg-8 col-lg-offset-2">
+            <p>
+                {% for ph in data2.cards %}
+                    {% if ph.id == data1.card.id %}
+                        {{ ph.info }}
+                    {% endif %}
+                    {% empty %}
+                    empty list
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+{% endblock %}

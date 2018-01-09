@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+
+{% block body1 %}
+    <div id="header1">
+        <div class="container">
+            <div class="row centered">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h1>Заказ №{{ data.order.id }}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 col-lg-offset-2">
+            <p>Страница заказа №{{ data.order.id }}</p>
+            <h10>Увы, все товары скупили майнеры криптовалют, вернитесь в каталог по кнопке "На главную"</h10>
+            <form action="{% url 'main_url' %}">
+                <input type="submit" class="btn btn-danger btn-lg btn-block" value="На главную" />
+            </form>
+        </div>
+    </div>
+{% endblock %}

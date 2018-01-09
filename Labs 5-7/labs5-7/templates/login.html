@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block body1 %}
+    <div id="body1">
+        <div class="container">
+            <div class="row centered">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h1><br><br>Авторизация<br><br></h1>
+                </div>
+            </div>
+        </div>
+        <form method="POST">
+            <div class="auth_block">
+                {% csrf_token %}
+                <div class="auth_blank">
+                    <label class="login">
+                        Логин
+                    </label>
+                    <div class="form-block">
+                        <input type="text" name="username">
+                    </div>
+                </div>
+                <div class="auth_blank">
+                    <label class="login">
+                        Пароль
+                    </label>
+                    <div class="form-block">
+                        <input type="password" name="password">
+                    </div>
+                </div>
+                {% if error != "" %}
+                    <p>{{ error }}</p>
+                {% endif %}
+                <br>
+                <button type="submit">Войти</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

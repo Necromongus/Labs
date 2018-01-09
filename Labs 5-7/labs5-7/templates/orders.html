@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+
+{% block body1 %}
+    <div id="header1">
+        <div class="container">
+            <div class="row centered">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h1>Заказы</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 col-lg-offset-2">
+            <p>
+                <ul>
+                    {% for order in data.orders %}
+                        {% include 'order_element.html' with element=order %}
+                    {% empty %}
+                        empty list :(
+                    {% endfor %}
+                </ul>
+            </p>
+        </div>
+    </div>
+{% endblock %}
