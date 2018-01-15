@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block body1 %}
+    <div id="body1" style="text-align: left">
+        {% if object_list %}
+            <table id="card">
+                <br><br><br>
+                <div class="card">
+                    {% for card in object_list %}
+                        <a href="/courses/{{ card.id_card }}" class="course-element">
+                            <span class="course-name">{{ card.card_name }}</span>
+                            <span class="course-tutor">{{ card.card_creator }}</span>
+                        </a>
+                    {% endfor %}
+                </div>
+
+            </table>
+            {% if is_paginated %}
+                <div class="pagination">
+                    <span class="page-links">
+                        {% if page_obj.has_previous %}
+                            <a class="aquo" href="/courses?page={{ page_obj.previous_page_number }}">&laquo;</a>
+                        {% else %}
+                            <span class="unavailable" href="">&laquo;</span>
+                        {% endif %}
+                        {% for page in page_obj.paginator.page_range %}
+                            {% if page %}
+                                {% ifequal page page_obj.number %}
+                                    <span class="current-page" href="">{{ page }}</span>
+                                {% else %}
+                                    <a href="/courses?page={{ page }}" class="page">{{ page }}</a>
+                                {% endifequal %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <a class="aquo" href="/courses?page={{ page_obj.next_page_number }}">&raquo;</a>
+                        {% else %}
+                            <span class="unavailable" href="">&raquo;</span>
+                        {% endif %}
+                        <span hidden id="per-page">{{ page_obj.paginator.per_page }}</span>
+                    </span>
+                </div>
+            {% endif %}
+        {% else %}
+            <h3></h3><br><br>
+            <p>Пока не добавлено ни одной видеокарты :(</p>
+        {% endif %}
+        {% if user.is_superuser %}
+            <a href="{% url 'course_add_url' %}">
+                <div class="add-button">&plus;</div>
+            </a>
+            <a href="#course-add-modal" data-toggle="modal">
+                <div class="add-button" style="color: #53cf10; bottom: 10%; border-color: #53cf10">&plus;</div>
+            </a>
+        {% endif %}
+        <div id="course-add-modal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h2 class="modal-title">Добавление новой видеокарты</h2>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" enctype="multipart/form-data">
+                            <div class="add-form container">
+                                {% csrf_token %}
+                                <div class="course_add">
+                                    <label for="id_name_course">Название:</label>
+                                    <div class="data-and-error">
+                                        <input type="text" name="card_name" maxlength="100" required id="id_name_course"/>
+                                        <h5 id="error_name_course">Заполните это поле</h5>
+                                     </div>
+                                </div>
+{#                                <div class="room_add">#}
+{#                                    <label for="id_nomer">Выберите посетителя:</label>#}
+{#                                    <div class="data-and-error">#}
+{#                                        <select name="code_registr" required id="id_subject">#}
+{#                                        <option value="" selected>Не выбрано</option>#}
+{#                                            {% for registr in human %}#}
+{#                                                 <option value="{{registr.id_human}}">{{ registr.fio }}</option>#}
+{#                                            {% endfor %}#}
+{#                                        </select>#}
+{#                                        <h5 id="error_subject_course">Выберите посетителя</h5>#}
+{#                                    </div>#}
+{#                                </div>#}
+                                <div class="room_add">
+                                <label for="id_nomer">Выберите комнату в отеле:</label>
+                                    <div class="data-and-error">
+                                        <select name="nomer_registr" required id="id_subject">
+                                        <option value="" selected>Не выбрано</option>
+                                            {% for registr in nomera %}
+                                                <option value="{{card.creator_id}}">{{ card.hotell }}{{ registr.kod_nomera }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <h5 id="error_subject_course">Выберите комнату</h5>
+                                    </div>
+                                </div>
+                                <button type="submit" id="btn_add2">Добавить регистрацию</button>
+                                <br>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

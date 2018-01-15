@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block body1 %}
+    <div id="body1">
+        <div class="container">
+            <div class="row centered">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h1><br>Регистрация 2<br><br></h1>
+                </div>
+            </div>
+        </div>
+    <form method= "POST">
+         <div class="auth_block">
+                {% csrf_token %}
+                {{ form.as_p }}
+             <br>
+             <button type= "submit"> Зарегистрироваться </button>
+         </div>
+    </form>
+    </div>
+{% endblock %}

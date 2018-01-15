@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block body1 %}
+    <div id="body1">
+        <br><br>
+        <h1>Добавление новой видеокарты</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="add-form">
+                {% csrf_token %}
+                <div class="course_add2">
+                                    <label for="id_name_course">Название видеокарты:</label>
+                                    <div class="data-and-error">
+                                        <input type="text" name="card_name" maxlength="100" required id="id_name_course"/>
+                                        <h5 id="error_name_course">Заполните это поле</h5>
+                                    </div>
+                                    </div>
+
+                                <div class="course_add2">
+                                    <label for="id_subject">Производитель:</label>
+                                    <div class="data-and-error">
+                                        <select name="card_creator" required id="id_subject">
+                                            <option value="" selected>Не выбрано</option>
+                                            {% for creator in creators %}
+                                                <option value="{{creator.creator_id}}">{{ creator.creator_name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    <h5 id="error_subject_course">Выберете производителя!</h5>
+                                    </div>
+                                </div>
+                            <div class="course_add2">
+                                    <label for="id_name_course">Цена:</label>
+                                    <div class="data-and-error">
+                                        <input type="text" name="card_price" maxlength="100" required id="id_name_course"/>
+                                        <h5 id="error_name_course">Заполните это поле</h5>
+                                    </div>
+
+                                <button type="submit" id="btn_add2">Добавить</button>
+                                <br>
+                            </div>
+
+                <br>
+            </div>
+{#        {% if user.is_superuser %}#}
+{##}
+{#            <a href="#course-add-modal" data-toggle="modal">#}
+{#                <div class="add-button" style="color: #53cf10; bottom: 10%; border-color: #53cf10">&plus;</div>#}
+{#            </a>#}
+{#        {% endif %}#}
+{#        <div id="course-add-modal" class="modal fade">#}
+{#            <div class="modal-dialog">#}
+{#                <div class="modal-content">#}
+{#                    <div class="modal-header">#}
+{#                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>#}
+{#                        <h2 class="modal-title">Добавление новой видеокарты</h2>#}
+{#                    </div>#}
+{#                    <div class="modal-body">#}
+{#                        <form method="POST" enctype="multipart/form-data">#}
+{#                            <div class="add-form container">#}
+{#                                {% csrf_token %}#}
+{#                                <div class="course_add2">#}
+{#                                    <label for="id_name_course">Название видеокарты:</label>#}
+{#                                    <div class="data-and-error">#}
+{#                                        <input type="text" name="card_name" maxlength="100" required id="id_name_course"/>#}
+{#                                        <h5 id="error_name_course">Заполните это поле</h5>#}
+{#                                    </div>#}
+{#                                    </div>#}
+{##}
+{#                                <div class="course_add2">#}
+{#                                    <label for="id_subject">Производитель:</label>#}
+{#                                    <div class="data-and-error">#}
+{#                                        <select name="card_creator" required id="id_subject">#}
+{#                                            <option value="" selected>Не выбрано</option>#}
+{#                                            {% for creator in creators %}#}
+{#                                                <option value="{{creator.creator_id}}">{{ creator.creator_name }}</option>#}
+{#                                            {% endfor %}#}
+{#                                        </select>#}
+{#                                    <h5 id="error_subject_course">Выберете производителя!</h5>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            <div class="course_add2">#}
+{#                                    <label for="id_name_course">Цена:</label>#}
+{#                                    <div class="data-and-error">#}
+{#                                        <input type="text" name="card_price" maxlength="100" required id="id_name_course"/>#}
+{#                                        <h5 id="error_name_course">Заполните это поле</h5>#}
+{#                                    </div>#}
+{##}
+{#                                <button type="submit" id="btn_add2">Добавить</button>#}
+{#                                <br>#}
+{#                            </div>#}
+{#                        </form>#}
+{#                    </div>#}
+{#                    <div class="modal-footer">#}
+{#                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+
+        </form>
+    </div>
+{% endblock %}

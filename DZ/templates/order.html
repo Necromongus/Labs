@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block body1 %}
+    <div id="body1">
+        <div class="course-obj">
+            <div class="course-obj-photo-and-title course-obj-border-bottom">
+                <div class="course-obj-photo-course">
+                {% if course.photo %}
+                    <img class="course-obj-img" src="{{ course.photo.url }}">
+                {% endif %}
+            </div>
+            <div class="course-obj-name">
+                {{ course.name_course }}<br>
+            </div>
+            </div>
+            <div class="course-obj-tutor-and-category course-obj-border-bottom">
+                <div class="course-obj-tutor course-obj-border-right">
+                    <span class="course-obj-titles">Преподаватель</span><br>
+                    <p class="course-obj-data">{{ course.tutor }}</p>
+                    <div class="course-obj-tutor-photo">
+                        <img class="img-tutor" src="{{ course.tutor.photo.url }}" width="40%" height="100%">
+                    </div>
+                </div>
+                <div class="course-obj-category">
+                    <span class="course-obj-titles">Категория</span><br>
+                    <p class="course-obj-data">{{ course.subject }}</p>
+                </div>
+            </div>
+            <div class="course-obj-info course-obj-border-bottom">
+                {{ course.information }}
+            </div>
+            <span class="course-obj-titles">Список записавшихся</span><br>
+            <textarea class="course-obj-users" disabled>
+                {% for user in course.get_users %}{{ user }}
+                {% endfor %}</textarea>
+            <form method="POST">
+                {% csrf_token %}
+                {% if request.user in course.course_users.all %}
+                    <button type="submit" name="add_user" id="Entry-disabled" disabled>Вы уже записаны!</button>
+                {% else %}
+                    <button type="submit" name="add_user" id="Entry">Записаться</button>
+                {% endif %}
+            </form>
+        </div>
+        <p hidden id="course_id">{{ course.id_registr }}</p>
+        <p hidden id="course_user">{{ request.user }}</p>
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body1 %}
+    <div id="body1">
+        <div class="container">
+            <div class="row centered">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h1><br><br><br><br>Вы успешно авторизованы!<br></h1>
+                    <h2>Через 5 секунд вы будете перенаправлены на главную страницу<br></h2>
+                    <meta http-equiv="refresh" content="5; url=/main/">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

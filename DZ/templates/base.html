@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nvidia</title>
+    {% load static %}
+    <link rel="shortcut icon" href="{% static "images/nvidia-logo.png" %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/js/bootstrap.min.js' %}">
+{#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>#}
+    <script type="text/javascript" src="{% static 'Bootstrap/js/my.js' %}"></script>
+    <script type="text/javascript" src="{% static 'Bootstrap/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'Bootstrap/js/jquery-3.2.1.min.js' %}"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'main_url' %}"><img alt="Brand" src="{% static '/images/Nvidia_logo1.png' %}" width="70" height="50"></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'main_url' %}">На главную </a></li>
+                    <li><a href="{% url 'courses_url' %}">Заказы</a></li>
+                    <li><a href="{% url 'db_url' %}">Работа с БД</a></li>
+                    <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="{% static "images/auth_icon.png" %}" width="30" height="30" alt=""/>
+{#                                <span class="caret"></span>#}
+                            </button>
+                            <div class="dropdown-content">
+                                {% if request.user.is_authenticated %}
+                                    <span>{{ request.user.username }}</span>
+                                    <a href="{% url 'logout_url' %}">Выйти</a>
+                                {% else %}
+                                    <a href="{% url 'login_url' %}">Вход</a>
+                                    <a href="{% url 'registration_url' %}">Регистрация</a>
+
+                                {% endif %}
+                                    <a href="{% url 'registration2_url' %}">Регистрация2</a>
+
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'Bootstrap/js/bootstrap.min.js' %}"></script>
+    {% block body1 %}{% endblock %}
+</body>
+</html>

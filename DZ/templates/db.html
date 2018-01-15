@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block body1 %}
+    <div id="header1">
+        <div class="container">
+            <div class="row centered">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h1><br><br>Сущности</h1>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row centered">
+                <li><a href="{% url 'cards1_url' %}">Видеокарты</a></li>
+                <li><a href="{% url 'creator_url' %}">Производители</a></li>
+                <li><a href="{% url 'orderbase_url' %}">Заказы</a></li>
+                <li><a href="{% url 'user_url' %}">Пользователи</a></li>
+            </div>
+        </div>
+    </div>
+{% endblock %}
